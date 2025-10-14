@@ -29,6 +29,9 @@ export function Navbar() {
           </Link>
           {loggedIn && (
             <>
+              <Link to="/dashboard" className="text-gray-900 hover:text-black transition-colors text-base font-normal">
+                Dashboard
+              </Link>
               <Link to="/appointments" className="text-gray-900 hover:text-black transition-colors text-base font-normal">
                 Appointments
               </Link>

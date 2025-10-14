@@ -22,12 +22,8 @@ export function Login() {
       setToken(response.data.token);
       setUser(response.data.user);
       
-      // Redirect based on user role
-      if (response.data.user.role === 'DOCTOR') {
-        navigate('/dashboard/doctor');
-      } else {
-        navigate('/dashboard/patient');
-      }
+      // Redirect to dashboard after login
+      navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {

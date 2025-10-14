@@ -26,9 +26,13 @@ export function Appointments() {
       setError('');
     } catch (err) {
       console.error('Error fetching appointments:', err);
+      console.error('Error response:', err.response);
       if (err.response?.status === 401) {
+        setError('Session expired. Please login again.');
         logout();
         navigate('/login');
+      } else if (err.code === 'ERR_NETWORK' || !err.response) {
+        setError('Cannot connect to server. Make sure backend is running on http://localhost:4000');
       } else {
         setError(err.response?.data?.message || 'Failed to load appointments');
       }

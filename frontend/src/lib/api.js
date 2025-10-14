@@ -11,14 +11,39 @@ const api = axios.create({
 });
 
 // Add token to requests
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  console.log('🔐 Token exists:', !!token);
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    console.log('🔐 Token exists:', !!token);
+    console.log('📤 Request:', config.method.toUpperCase(), config.url);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    console.error('❌ Request error:', error);
+    return Promise.reject(error);
   }
-  return config;
-});
+);
+
+// Add response interceptor for better error logging
+api.interceptors.response.use(
+  (response) => {
+    console.log('✅ Response:', response.config.method.toUpperCase(), response.config.url, response.status);
+    return response;
+  },
+  (error) => {
+    if (error.response) {
+      console.error('❌ Response error:', error.response.status, error.response.data);
+    } else if (error.request) {
+      console.error('❌ No response received:', error.request);
+    } else {
+      console.error('❌ Error:', error.message);
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Auth API
 export const authAPI = {

@@ -21,7 +21,7 @@ export function Visits() {
   const fetchVisits = async () => {
     try {
       setLoading(true);
-      const response = await visitAPI.getAll();
+      const response = await visitAPI.getMyVisits();
       setVisits(response.data);
       setError('');
     } catch (err) {

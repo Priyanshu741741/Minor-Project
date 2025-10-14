@@ -31,8 +31,8 @@ export function Doctors() {
     const search = searchTerm.toLowerCase();
     return (
       doctor.full_name?.toLowerCase().includes(search) ||
-      doctor.specialization?.toLowerCase().includes(search) ||
-      doctor.license_number?.toLowerCase().includes(search)
+      doctor.doctor_profile?.specialization?.toLowerCase().includes(search) ||
+      doctor.doctor_profile?.license_number?.toLowerCase().includes(search)
     );
   });
 
@@ -117,22 +117,22 @@ export function Doctors() {
                   <h3 className="text-xl font-serif font-bold text-gray-900 mb-1">
                     Dr. {doctor.full_name}
                   </h3>
-                  {doctor.specialization && (
+                  {doctor.doctor_profile?.specialization && (
                     <div className="flex items-center justify-center gap-2 text-blue-600 mb-2">
                       <Stethoscope className="w-4 h-4" />
-                      <span className="text-sm font-medium">{doctor.specialization}</span>
+                      <span className="text-sm font-medium">{doctor.doctor_profile.specialization}</span>
                     </div>
                   )}
                 </div>
 
                 {/* Doctor Details */}
                 <div className="space-y-3 border-t pt-4">
-                  {doctor.license_number && (
+                  {doctor.doctor_profile?.license_number && (
                     <div className="flex items-start gap-2 text-sm">
                       <Award className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="text-gray-500">License</p>
-                        <p className="text-gray-900 font-medium">{doctor.license_number}</p>
+                        <p className="text-gray-900 font-medium">{doctor.doctor_profile.license_number}</p>
                       </div>
                     </div>
                   )}
@@ -147,10 +147,10 @@ export function Doctors() {
                     </div>
                   )}
 
-                  {doctor.bio && (
+                  {doctor.doctor_profile?.bio && (
                     <div className="text-sm">
                       <p className="text-gray-500 mb-1">About</p>
-                      <p className="text-gray-700 line-clamp-3">{doctor.bio}</p>
+                      <p className="text-gray-700 line-clamp-3">{doctor.doctor_profile.bio}</p>
                     </div>
                   )}
                 </div>

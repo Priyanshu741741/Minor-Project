@@ -21,7 +21,7 @@ export function Appointments() {
   const fetchAppointments = async () => {
     try {
       setLoading(true);
-      const response = await appointmentAPI.getAll();
+      const response = await appointmentAPI.getMyAppointments();
       setAppointments(response.data);
       setError('');
     } catch (err) {
@@ -159,9 +159,9 @@ export function Appointments() {
                           <p className="font-medium text-gray-900">
                             {appointment.doctor?.full_name || 'N/A'}
                           </p>
-                          {appointment.doctor?.specialization && (
+                          {appointment.doctor?.doctor_profile?.specialization && (
                             <p className="text-sm text-gray-500">
-                              {appointment.doctor.specialization}
+                              {appointment.doctor.doctor_profile.specialization}
                             </p>
                           )}
                         </div>

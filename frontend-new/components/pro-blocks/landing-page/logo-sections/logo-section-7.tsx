@@ -1,5 +1,3 @@
-"use client";
-
 import { Tagline } from "@/components/pro-blocks/landing-page/tagline";
 
 const logosData = [

@@ -1,5 +1,3 @@
-"use client";
-
 import { Logo } from "@/components/pro-blocks/logo";
 import { Link } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";

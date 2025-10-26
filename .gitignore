@@ -1,5 +1,6 @@
 # Ignore reference project
 lovy-tech/
+frontend/
 
 # Dependencies
 node_modules/

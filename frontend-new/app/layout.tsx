@@ -1,19 +1,8 @@
-import type { Metadata } from "next";
-import { Onest } from "next/font/google";
 import "./globals.css";
+import React from "react";
 
-const onest = Onest({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
-});
-
-export const metadata: Metadata = {
-  title: "PEC Dispensary - Management system and Feedback Analysis",
-  description:
-    "Management system and Feedback Analysis Using NLP and NN",
-    generator: 'v0.app'
-};
+// For Vite projects, font configuration is handled differently
+// You can use Google Fonts via index.html or CSS imports
 
 export default function RootLayout({
   children,
@@ -23,8 +12,14 @@ export default function RootLayout({
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head />
-        <body className={`${onest.variable} relative antialiased`}>
+        <head>
+          <title>PEC Dispensary - Management system and Feedback Analysis</title>
+          <meta name="description" content="Management system and Feedback Analysis Using NLP and NN" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        </head>
+        <body className="relative antialiased font-sans">
           {children}
         </body>
       </html>

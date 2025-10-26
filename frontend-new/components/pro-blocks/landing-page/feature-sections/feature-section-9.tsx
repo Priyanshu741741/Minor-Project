@@ -1,5 +1,3 @@
-"use client";
-
 import { LogIn, ClipboardList, Brain, Bell } from "lucide-react";
 import { Tagline } from "@/components/pro-blocks/landing-page/tagline";
 

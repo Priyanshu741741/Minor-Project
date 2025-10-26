@@ -1,5 +1,3 @@
-"use client";
-
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 interface TestimonialsSection1Props {
